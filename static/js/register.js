@@ -104,15 +104,15 @@ var vm = new Vue({
                 this.error_phone = true;
             }
             if (this.error_phone == false) {
-                axios.get('http://127.0.0.1:8000' + '/users/phones/' + this.username + '/count/', {
+                axios.get('http://127.0.0.1:8000' + '/users/phones/' + this.mobile + '/count/', {
                     responseType: 'json'
                 })
                     .then(response => {
                         if (response.data.count > 0) {
-                            this.error_name_message = '手机号已存在';
-                            this.error_name = true;
+                            this.error_phone_message = '手机号已存在';
+                            this.error_phone = true;
                         } else {
-                            this.error_name = false;
+                            this.error_phone = false;
                         }
                     })
                     .catch(error => {
