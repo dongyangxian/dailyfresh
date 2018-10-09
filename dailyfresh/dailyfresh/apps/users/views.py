@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from  rest_framework.generics import CreateAPIView
 # Create your views here.
 from users.models import User
+from users.serializers import CreateUserSerializer
 
+class CreateUserView(CreateAPIView):
+    """用户注册"""
+    serializer_class = CreateUserSerializer
 
 class UserExsitView(APIView):
     """用户判断"""

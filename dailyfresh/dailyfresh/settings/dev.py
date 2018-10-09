@@ -25,8 +25,7 @@ SECRET_KEY = 'spb(v5#7=wmih^gkb1u#bkvt(42i1zq05jh+=y2#(o3ix%2fpt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -40,9 +39,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'users.apps.UsersConfig',  # 添加用户应用
     'passport.apps.PassportConfig',  # 添加注册应用
+    'corsheaders',  # 跨域
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # 跨域
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'dailyfresh.urls'
@@ -204,3 +206,10 @@ REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'dailyfresh.utils.exc.exception_handler',
 }
+
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    '127.0.0.1:8080',
+    'localhost:8080',
+)
+CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
