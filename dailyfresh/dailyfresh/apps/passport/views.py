@@ -12,7 +12,6 @@ from rest_framework.views import APIView
 #     print(image_id)
 #     return Response('ok')
 from dailyfresh.libs.captcha.captcha import captcha
-from passport.serializers import CodeImageSerializer
 
 class SendImageIdView(APIView):
     """发送图片验证码"""
