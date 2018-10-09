@@ -17,3 +17,16 @@ class UserExsitView(APIView):
         }
 
         return Response(data)
+
+class PhoneExsitView(APIView):
+    """手机号判断"""
+    def get(self, request, phone):
+
+        count = User.objects.filter(mobile=phone).count()
+
+        data = {
+            'phone': phone,
+            'count': count
+        }
+
+        return Response(data)
