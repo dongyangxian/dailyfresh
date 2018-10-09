@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users.apps.UsersConfig',  # 添加用户应用
+    'passport.apps.PassportConfig',  # 添加注册应用
 ]
 
 MIDDLEWARE = [
@@ -133,14 +134,14 @@ STATIC_URL = '/static/'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://10.211.55.5:6379/0",
+        "LOCATION": "redis://127.0.0.1:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "session": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://10.211.55.5:6379/1",
+        "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -201,5 +202,5 @@ LOGGING = {
 # 添加异常处理
 REST_FRAMEWORK = {
     # 异常处理
-    'EXCEPTION_HANDLER': 'dailyfresh.utils.exceptions.exception_handler',
+    'EXCEPTION_HANDLER': 'dailyfresh.utils.exc.exception_handler',
 }
